@@ -1,5 +1,9 @@
 # UKMFolio Organizer — Chrome extension (v1.0.1)
 
+## What is this UKMFolio Organizer for?
+
+https://github.com/user-attachments/assets/a68b2d71-110a-43e5-8ac9-f4d0fcaf988e
+
 A lightweight local-first organizer for Chrome and other compatible Chromium browsers on **Windows, macOS, and Linux**. It is not a UKM product.
 
 ## Update from v1.0.0 (keep your hidden assignments)
