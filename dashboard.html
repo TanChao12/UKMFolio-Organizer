@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="friendly.css"><title>UKMFolio Organizer</title></head>
+<body>
+<main class="shell">
+  <header class="top"><a class="brand" href="dashboard.html"><span class="logo" aria-hidden="true">F</span> Folio Organizer</a><div class="top-actions"><a href="https://ukmfoliov2.ukm.my/my/" target="_blank" rel="noopener noreferrer">Open UKMFolio ↗</a><button id="sync" class="outline">Refresh assignments</button></div></header>
+  <section class="overview" aria-labelledby="page-title">
+    <div><h1 id="page-title">Your coursework</h1><p class="sync-note" id="stat-sync">Open UKMFolio while signed in to sync automatically.</p></div>
+    <div class="progress-card"><span>Progress</span><strong id="progress-count">0 of 0 done</strong><progress id="progress" max="1" value="0" aria-label="Assignment progress"></progress><small id="progress-pct" class="sr-only">0% complete</small></div>
+  </section>
+  <nav class="main-switch" aria-label="Dashboard views">
+    <button class="selected" id="focus-tab" aria-pressed="true">Focus</button>
+    <button id="browse-tab" aria-pressed="false">All assignments</button>
+  </nav>
+  <section id="focus-panel" class="panel focus-panel" aria-labelledby="focus-title">
+    <div class="panel-head"><h2 id="focus-title" tabindex="-1">Start here</h2><button id="manual-focus" class="outline">+ Add assignment</button></div>
+    <div id="focus-items" class="assignment-list"></div><p id="focus-empty" class="empty"></p>
+    <div class="focus-foot"><span id="focus-summary"></span><button id="browse-more" class="quiet">See all assignments →</button></div>
+  </section>
+  <section class="panel hidden" id="browse-panel" aria-labelledby="view-title">
+    <div class="panel-head"><h2 id="view-title" tabindex="-1">Assignments</h2><button id="manual" class="primary">+ Add assignment</button></div>
+    <nav aria-label="Assignment views" class="tabs">
+      <button class="nav selected" data-view="active" aria-pressed="true">All visible <span id="count-active">0</span></button><button class="nav" data-view="todo">To do</button><button class="nav" data-view="soon">Due soon</button><button class="nav" data-view="done">Done</button><button class="nav" data-view="hidden">Hidden <span id="count-hidden">0</span></button><button class="nav" data-view="all">All <span id="count-all">0</span></button>
+    </nav>
+    <div class="filters"><input id="search" type="search" placeholder="Search assignments or courses" aria-label="Search assignments"><select id="course" aria-label="Filter by course"><option value="">All courses</option></select><select id="sort" aria-label="Sort assignments"><option value="due">Due date</option><option value="course">Course</option><option value="title">Title</option><option value="updated">Recently synced</option></select></div>
+    <p class="list-count" id="list-count"></p><div id="rows" class="assignment-list"></div><p id="empty" class="empty hidden"></p><nav id="pager" class="pager hidden" aria-label="Assignment pages"><button id="previous" class="outline">← Previous</button><span id="page-label" aria-live="polite"></span><button id="next" class="outline">Next →</button></nav>
+  </section>
+  <details class="settings"><summary>Export, backup and help</summary><div><button id="export" class="outline">Download Excel</button><button id="backup" class="outline">Download backup</button><button id="restore-file" class="outline">Restore from backup</button><input id="import" type="file" accept="application/json,.json" hidden><p>Checked-off assignments, hidden items and notes are saved in this Chrome profile. UKMFolio submissions stay on UKMFolio.</p></div></details>
+</main>
+<div class="toast hidden" id="status" role="status" aria-live="polite"><span id="toast-icon" aria-hidden="true">✓</span><span id="toast-message"></span><button id="toast-undo" class="hidden">Undo</button><button id="toast-close" aria-label="Dismiss notification">×</button></div>
+<dialog id="manual-dialog" aria-labelledby="manual-title"><form id="manual-form"><h2 id="manual-title">Add an assignment</h2><label>Assignment name <input name="title" required maxlength="300" placeholder="e.g. Week 4 tutorial"></label><label>Course <input name="course" required maxlength="120" placeholder="e.g. Software Testing"></label><label>Due date <input name="due" type="datetime-local"></label><label>UKMFolio link (optional) <input name="url" type="url" placeholder="https://ukmfoliov2.ukm.my/…"></label><div class="dialog-actions"><button type="button" id="cancel-manual" class="outline">Cancel</button><button type="submit" class="primary">Add assignment</button></div></form></dialog>
+<script src="db.js"></script><script src="xlsx.js"></script><script src="focus.js"></script><script src="dashboard.js"></script></body></html>

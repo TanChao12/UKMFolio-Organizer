@@ -1,0 +1,97 @@
+:root {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  color: #202c29;
+  background: #f7f7f2;
+  --canvas: #f7f7f2;
+  --paper: #fffefa;
+  --ink: #202c29;
+  --muted: #52615a;
+  --line: #d9dfd5;
+  --accent: #185a46;
+  --active: #e8f0e8;
+}
+* { box-sizing: border-box; }
+body, h1, h2, p { margin: 0; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: default; opacity: .5; }
+a { color: var(--accent); text-underline-offset: .2em; }
+:focus-visible { outline: 3px solid #286d9a; outline-offset: 3px; }
+.hidden { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.shell { max-width: 980px; margin: auto; padding: 0 32px 36px; }
+.top, .top-actions, .overview, .panel-head, .focus-foot, .filters, .row-actions, .pager, .dialog-actions { display: flex; align-items: center; gap: 12px; }
+.top, .overview, .panel-head, .focus-foot, .pager { justify-content: space-between; }
+.top { border-bottom: 1px solid var(--line); min-height: 66px; }
+.brand { display: inline-flex; gap: 9px; align-items: center; text-decoration: none; color: var(--ink); font-weight: 700; white-space: nowrap; }
+.logo { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 6px; color: white; background: var(--accent); font-size: 15px; }
+.top-actions { font-size: 13px; flex-wrap: wrap; justify-content: flex-end; }
+.overview { padding: 28px 0 24px; align-items: end; }
+h1 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: clamp(34px, 5vw, 49px); letter-spacing: -.045em; line-height: 1.02; }
+.sync-note { margin-top: 7px; color: var(--muted); font-size: 13px; }
+.progress-card { display: grid; grid-template-columns: auto auto; column-gap: 12px; row-gap: 6px; min-width: 170px; line-height: 1.25; font-size: 13px; }
+.progress-card span { color: var(--muted); }
+.progress-card strong { text-align: right; }
+progress { grid-column: 1 / -1; width: 100%; height: 6px; accent-color: var(--accent); }
+
+.main-switch { display: flex; gap: 20px; border-bottom: 1px solid var(--line); margin-bottom: 17px; }
+.main-switch button { padding: 10px 1px; border: 0; border-bottom: 3px solid transparent; margin-bottom: -1px; color: var(--muted); background: transparent; font-weight: 650; }
+.main-switch button.selected { color: var(--accent); border-color: var(--accent); }
+.panel { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); padding: 17px 19px; }
+.panel h2 { font-size: 21px; font-weight: 700; letter-spacing: -.025em; }
+.panel-head { margin-bottom: 11px; }
+.outline, .primary, .row-actions button { padding: 7px 11px; min-height: 35px; border-radius: 6px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-weight: 650; }
+.primary { color: white; background: var(--accent); border-color: var(--accent); }
+.primary:hover { background: #124a39; }
+.outline:hover:not(:disabled), .row-actions button:hover { background: var(--active); }
+.quiet { background: transparent; border: 0; color: var(--accent); text-decoration: underline; text-underline-offset: .2em; padding: 5px 0; font-weight: 650; }
+.focus-foot { min-height: 38px; font-size: 13px; color: var(--muted); }
+.focus-foot .quiet { margin-left: auto; }
+.assignment { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; border-top: 1px solid var(--line); padding: 11px 0; }
+.task-title { display: block; font-size: 15px; font-weight: 700; overflow-wrap: anywhere; }
+.task-meta { font-size: 13px; color: var(--muted); margin-top: 4px; overflow-wrap: anywhere; }
+.deadline { display: inline-block; margin-bottom: 4px; color: var(--muted); font-size: 12px; font-weight: 650; }
+.deadline.soon { color: #755000; }
+.deadline.late { color: #9a3827; }
+.row-actions { gap: 6px; }
+.row-actions button { min-height: 32px; font-size: 13px; }
+.row-actions button:last-child { border-color: transparent; color: var(--muted); }
+.row-actions .complete[aria-pressed=true] { background: var(--active); color: var(--accent); }
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 9px; }
+.nav { padding: 6px 8px; background: transparent; color: var(--muted); border: 1px solid transparent; border-radius: 5px; font-size: 13px; font-weight: 650; }
+.nav:hover, .nav.selected { color: var(--accent); background: var(--active); }
+.nav span { margin-left: 3px; }
+.filters { gap: 8px; }
+.filters input { flex: 1; min-width: 0; }
+.filters select { max-width: 29%; }
+input, select { min-height: 39px; border: 1px solid #bfccc1; border-radius: 6px; padding: 7px 9px; background: white; color: var(--ink); }
+.list-count, .pager { color: var(--muted); font-size: 13px; }
+.list-count { margin: 11px 0 5px; }
+.pager { padding-top: 10px; border-top: 1px solid var(--line); }
+.empty { padding: 20px 0; color: var(--muted); }
+.settings { margin-top: 15px; color: var(--muted); font-size: 13px; }
+.settings summary { cursor: pointer; width: fit-content; padding: 7px 0; }
+.settings button { margin: 3px 0; }
+.settings p { margin-top: 6px; }
+
+.toast { position: fixed; right: 16px; bottom: 16px; z-index: 1; display: flex; align-items: center; gap: 9px; max-width: min(430px, calc(100% - 32px)); padding: 10px 12px; border-radius: 8px; background: #22453b; color: white; box-shadow: 0 5px 20px #202c2940; }
+.toast.error { background: #842f25; }
+.toast button { border: 0; background: transparent; color: white; padding: 5px; font-weight: 700; }
+#toast-undo { text-decoration: underline; }
+dialog { width: min(430px, calc(100% - 28px)); border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--paper); padding: 19px; }
+dialog::backdrop { background: #202c296e; }
+dialog form, dialog label { display: grid; gap: 6px; }
+dialog form { gap: 12px; }
+.dialog-actions { justify-content: flex-end; }
+@media (max-width: 580px) {
+  .shell { padding: 0 12px 24px; }
+  .top-actions { gap: 4px 8px; }
+  .top-actions .outline { padding: 5px; font-size: 12px; }
+  .overview { align-items: start; flex-direction: column; gap: 10px; padding: 17px 0; }
+  .panel { padding: 12px; }
+  .assignment { grid-template-columns: 1fr; gap: 6px; }
+  .filters { flex-wrap: wrap; }
+  .filters input { flex-basis: 100%; }
+  .filters select { max-width: 50%; }
+}

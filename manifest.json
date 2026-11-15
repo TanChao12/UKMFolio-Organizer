@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "UKMFolio Organizer",
+  "short_name": "Folio Organizer",
+  "version": "1.1.0",
+  "description": "See upcoming assignments and track your progress. Syncs when you open UKMFolio.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://ukmfoliov2.ukm.my/*",
+    "https://ukmfolio.ukm.my/*",
+    "https://ukmfolio.ukm.qa/*"
+  ],
+  "action": {
+    "default_title": "Open UKMFolio Organizer",
+    "default_popup": "popup.html"
+  },
+  "options_page": "dashboard.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "background": {
+    "service_worker": "sync-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://ukmfoliov2.ukm.my/*",
+        "https://ukmfolio.ukm.my/*",
+        "https://ukmfolio.ukm.qa/*"
+      ],
+      "js": [
+        "extractor.js",
+        "auto-sync.js",
+        "auto-start.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
